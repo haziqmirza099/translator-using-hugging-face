@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Translation</title>
+</head>
+<body>
+    <h1>Language Translation</h1>
+    <form method="POST">
+        <label for="input_text">Enter text to translate:</label><br>
+        <textarea id="input_text" name="input_text" rows="5" cols="40">{{ request.form['input_text'] }}</textarea><br><br>
+
+        <label for="src_lang">Select Source Language:</label><br>
+        <select id="src_lang" name="src_lang">
+            <option value="en_XX" {% if request.form['src_lang'] == 'en_XX' %}selected{% endif %}>English</option>
+            <option value="hi_IN" {% if request.form['src_lang'] == 'hi_IN' %}selected{% endif %}>Hindi</option>
+            <option value="fr_XX" {% if request.form['src_lang'] == 'fr_XX' %}selected{% endif %}>French</option>
+            <option value="de_DE" {% if request.form['src_lang'] == 'de_DE' %}selected{% endif %}>German</option>
+            <option value="es_XX" {% if request.form['src_lang'] == 'es_XX' %}selected{% endif %}>Spanish</option>
+            <option value="it_IT" {% if request.form['src_lang'] == 'it_IT' %}selected{% endif %}>Italian</option>
+            <option value="ja_XX" {% if request.form['src_lang'] == 'ja_XX' %}selected{% endif %}>Japanese</option>
+            <option value="ur_PK" {% if request.form['src_lang'] == 'ur_PK' %}selected{% endif %}>Urdu</option>
+        </select><br><br>
+
+        <label for="tgt_lang">Select Target Language:</label><br>
+        <select id="tgt_lang" name="tgt_lang">
+            <option value="hi_IN" {% if request.form['tgt_lang'] == 'hi_IN' %}selected{% endif %}>Hindi</option>
+            <option value="en_XX" {% if request.form['tgt_lang'] == 'en_XX' %}selected{% endif %}>English</option>
+            <option value="fr_XX" {% if request.form['tgt_lang'] == 'fr_XX' %}selected{% endif %}>French</option>
+            <option value="de_DE" {% if request.form['tgt_lang'] == 'de_DE' %}selected{% endif %}>German</option>
+            <option value="es_XX" {% if request.form['tgt_lang'] == 'es_XX' %}selected{% endif %}>Spanish</option>
+            <option value="it_IT" {% if request.form['tgt_lang'] == 'it_IT' %}selected{% endif %}>Italian</option>
+            <option value="ja_XX" {% if request.form['tgt_lang'] == 'ja_XX' %}selected{% endif %}>Japanese</option>
+            <option value="ur_PK" {% if request.form['tgt_lang'] == 'ur_PK' %}selected{% endif %}>Urdu</option>
+        </select><br><br>
+
+        <button type="submit">Translate</button>
+    </form>
+
+    {% if translated_text %}
+    <h2>Translated Text:</h2>
+    <p>{{ translated_text }}</p>
+    {% endif %}
+</body>
+</html>
